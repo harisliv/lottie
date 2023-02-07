@@ -7,31 +7,51 @@ import ProTip from "../src/ProTip";
 import Copyright from "../src/Copyright";
 import DisplayLottie from "./Lottie";
 import Coding from "./lottie.json";
+import styled from "@emotion/styled";
+import ResponsiveAppBar from "./AppBar";
+import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 
+const StyledH1 = styled.h1`
+  color: red;
+  font-size: 50px;
+`;
 
 export default function Home() {
   return (
-    <Container maxWidth="lg">
-      <DisplayLottie animationData={Coding} />
+    <>
+      <ResponsiveAppBar />
+      <Container maxWidth="lg">
+        <Grid
+          container
+          spacing={2}
+          justifyContent={"center"}
+        >
+          <Grid xs={6}>
+            <StyledH1>Haris Livieratos</StyledH1>
+          </Grid>
+          <Grid xs={6}>
+            <Container maxWidth="sm">
+              <DisplayLottie animationData={Coding} />
+            </Container>
+          </Grid>
+        </Grid>
 
-      <Box
-        sx={{
-          my: 4,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Typography variant="h4" component="h1" gutterBottom>
-          MUI v5 + Next.js with TypeScript example
-        </Typography>
-        <Link href="/about" color="secondary">
-          Go to the about page
-        </Link>
-        <ProTip />
-        <Copyright />
-      </Box>
-    </Container>
+        <Box
+          sx={{
+            my: 4,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Link href="/about" color="secondary">
+            Go to the about page
+          </Link>
+          <ProTip />
+          <Copyright />
+        </Box>
+      </Container>
+    </>
   );
 }
